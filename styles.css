@@ -34,50 +34,120 @@ body {
 }
 
 header {
-    background-color: var(--white);
-    box-shadow: 0 2px 10px var(--shadow);
+    background: linear-gradient(to bottom, var(--white) 0%, var(--cream-light) 100%);
+    box-shadow: 0 4px 20px var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--light-green);
+    position: relative;
+}
+
+header::before {
+    content: '🌿';
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    animation: leafSway 4s ease-in-out infinite;
+}
+
+header::after {
+    content: '🍃';
+    position: absolute;
+    top: -15px;
+    right: 8%;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: leafSway 5s ease-in-out infinite reverse;
+}
+
+@keyframes leafSway {
+    0%, 100% { transform: rotate(-5deg) translateY(0px); }
+    50% { transform: rotate(5deg) translateY(-5px); }
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
+    position: relative;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     text-decoration: none;
     color: var(--primary-green);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logo img {
-    height: 50px;
+    height: 55px;
     width: auto;
+    filter: drop-shadow(0 2px 8px rgba(74, 124, 89, 0.3));
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 2px 8px rgba(74, 124, 89, 0.3)); }
+    50% { filter: drop-shadow(0 4px 12px rgba(74, 124, 89, 0.5)); }
 }
 
 .logo h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo h1::after {
+    content: 'Refresh Every Room';
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    margin-top: -5px;
+    background: var(--accent-sage);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
+    background: rgba(168, 201, 176, 0.1);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-dark);
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
     position: relative;
+    padding: 0.3rem 0;
+}
+
+nav a::before {
+    content: '🌱';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
 }
 
 nav a::after {
@@ -86,13 +156,20 @@ nav a::after {
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 2px;
-    background-color: var(--primary-green);
-    transition: width 0.3s ease;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+    transition: width 0.4s ease;
+    border-radius: 2px;
 }
 
 nav a:hover {
     color: var(--primary-green);
+    transform: translateY(-2px);
+}
+
+nav a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 nav a:hover::after {
@@ -100,9 +177,9 @@ nav a:hover::after {
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 50%, var(--secondary-green) 100%);
     color: var(--white);
-    padding: 6rem 0;
+    padding: 8rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -113,11 +190,11 @@ nav a:hover::after {
     position: absolute;
     top: -50%;
     right: -10%;
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
     border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
 }
 
 .hero::after {
@@ -125,16 +202,22 @@ nav a:hover::after {
     position: absolute;
     bottom: -30%;
     left: -5%;
-    width: 400px;
-    height: 400px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
     border-radius: 50%;
-    animation: float 8s ease-in-out infinite reverse;
+    animation: float 8s ease-in-out infinite reverse, pulse 5s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    33% { transform: translateY(-30px) translateX(20px); }
+    66% { transform: translateY(-15px) translateX(-15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
 }
 
 .hero-content {
@@ -142,39 +225,113 @@ nav a:hover::after {
     z-index: 1;
 }
 
+.hero-content::before {
+    content: '🌿';
+    position: absolute;
+    top: -60px;
+    left: 10%;
+    font-size: 4rem;
+    opacity: 0.3;
+    animation: leafFloat 10s ease-in-out infinite, rotate 20s linear infinite;
+}
+
+.hero-content::after {
+    content: '🍃';
+    position: absolute;
+    bottom: -60px;
+    right: 15%;
+    font-size: 3.5rem;
+    opacity: 0.25;
+    animation: leafFloat 12s ease-in-out infinite reverse, rotate 25s linear infinite reverse;
+}
+
+@keyframes leafFloat {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-40px) translateX(30px); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .hero h2 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
-    animation: fadeInDown 0.8s ease;
+    animation: fadeInDown 1s ease, textGlow 3s ease-in-out infinite;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+    50% { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2); }
 }
 
 .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
     opacity: 0.95;
-    animation: fadeInUp 0.8s ease;
+    animation: fadeInUp 1s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 @keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-50px) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
+}
+
+.hero .btn {
+    animation: fadeInUp 1.2s ease, btnFloat 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.hero .btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+@keyframes btnFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
 .btn {
