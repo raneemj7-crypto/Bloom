@@ -1,0 +1,180 @@
+# Bloom - Plant E-commerce Platform
+
+## Recent Changes
+
+**October 5, 2025 - Initial Implementation Complete**
+- ✅ Full HTML/CSS static website implementation
+- ✅ All 11 pages created with responsive design
+- ✅ Leaf-green color palette with CSS Variables theming
+- ✅ Product images integrated from attached_assets
+- ✅ Creative animations (hero floating circles, hover effects)
+- ✅ Simple HTTP server running on port 5000
+- ✅ Complete navigation structure across all pages
+
+**Pages Implemented:**
+- Home, Shop, Product Detail, Plan Details, Cart, Checkout, Contact, Feedback, Login, Register, Profile
+
+**Design Features:**
+- Gradient hero section with animated background elements
+- Product cards with hover animations
+- Filter buttons for shop categories
+- Responsive grid layouts (Flexbox/Grid)
+- Form styling with modern inputs
+- Comprehensive footer with quick links
+
+## Overview
+
+Bloom is a modern plant-centric web application that combines e-commerce, subscription services, and community features to help users discover, purchase, and care for indoor plants. The platform offers a curated catalog of plants (indoor, succulents, tropical), subscription-based delivery plans, and care guidance to make plant ownership accessible and enjoyable.
+
+**Core Capabilities:**
+- Browse and purchase individual plants with detailed care profiles
+- Subscribe to monthly plant delivery boxes with tiered membership options
+- Manage shopping cart, checkout, and order history
+- User authentication and profile management
+- Customer feedback and contact support forms
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Architecture
+
+**Technology Stack:**
+- Pure HTML5/CSS3 with semantic markup
+- CSS Variables for consistent theming (green/earth-tone color palette)
+- Vanilla JavaScript for interactivity and form validation
+- Responsive design using CSS Flexbox and Grid
+- Optional utility framework support (Bootstrap or Tailwind CSS)
+
+**Design Pattern:**
+- Multi-page application (MPA) with static HTML pages
+- Shared navigation header across all pages
+- Modular CSS using CSS custom properties for theming
+- Component-based styling (cards, forms, buttons) for reusability
+
+**Rationale:** The static HTML approach provides simplicity and fast initial loads, suitable for a content-focused e-commerce site. CSS Variables enable easy theme customization without preprocessors.
+
+### Page Structure & Routing
+
+**Public Pages:**
+- `index.html` - Homepage with hero section, features, and plant previews
+- `shop.html` - Product catalog with filtering capabilities
+- `product.html` - Individual product detail pages
+- `plan-details.html` - Subscription plan comparison and selection
+- `contact.html` - Customer inquiry form
+- `feedback.html` - User feedback submission
+
+**E-commerce Flow:**
+- `cart.html` - Shopping cart management
+- `checkout.html` - Order completion with shipping/payment forms
+
+**User Account:**
+- `login.html` - User authentication
+- `register.html` - New user registration
+- `profile.html` - User dashboard with orders and saved plants
+
+**Design Decision:** Traditional multi-page structure chosen for SEO benefits and simplicity. Future enhancement could migrate to SPA with client-side routing for smoother navigation.
+
+### State Management
+
+**Current Approach:**
+- Client-side state management through JavaScript
+- Form data handled via standard HTML forms
+- No persistent state management framework
+
+**Future Consideration:** As the application grows, implementing localStorage for cart persistence and session management would improve user experience.
+
+### Styling System
+
+**CSS Architecture:**
+- Custom CSS variables for color theming (`--primary-green`, `--cream`, etc.)
+- Reusable component classes (`.product-card`, `.form-group`, `.btn`)
+- Responsive grid layouts for product displays and forms
+- Consistent spacing and shadow variables
+
+**Pros:**
+- Lightweight with no build step required
+- Easy theme customization through CSS variables
+- Fast loading times
+
+**Cons:**
+- Manual consistency enforcement across pages
+- Limited component reusability compared to CSS-in-JS solutions
+
+### Form Handling & Validation
+
+**Approach:**
+- HTML5 native form validation (`required` attributes)
+- Client-side JavaScript validation for enhanced UX
+- Standard form submissions (no AJAX currently implemented)
+
+**Future Enhancement:** Implementing fetch API for AJAX submissions would enable smoother form interactions without page reloads.
+
+### Authentication Strategy
+
+**Current Implementation:**
+- Static login/register pages with client-side validation
+- No backend authentication currently implemented
+
+**Recommended Future Architecture:**
+- JWT-based authentication for stateless sessions
+- Secure cookie storage for auth tokens
+- Backend user session management
+- Role-based access control for admin features
+
+## External Dependencies
+
+### Asset Storage
+- **Location:** `/attached_assets/` directory
+- **Content:** Product images, logo, design documentation
+- **Format:** Images (WEBP, PNG, JPG), text files
+
+### Planned Integrations (Not Yet Implemented)
+
+**Payment Processing:**
+- Stripe or PayPal integration required for checkout functionality
+- PCI compliance considerations for payment data handling
+
+**Email Services:**
+- Transactional email provider (SendGrid, Mailgun) for order confirmations and notifications
+- Newsletter service for subscription plan communications
+
+**AI Plant Assistant:**
+- Integration with AI/ML API (OpenAI, custom model) for plant care recommendations
+- Real-time chat widget embedded site-wide
+
+**Content Delivery:**
+- CDN recommended for image optimization and global delivery
+- Image optimization service for product photos
+
+### Database Requirements (Future)
+
+**Recommended Schema:**
+- **Users:** Authentication credentials, profile information, preferences
+- **Products:** Plant catalog with care specifications, pricing, inventory
+- **Orders:** Transaction history, shipping details, order status
+- **Subscriptions:** Plan tiers, recurring billing, delivery schedules
+- **Reviews:** Product ratings and user feedback
+
+**Technology Options:**
+- PostgreSQL for relational data (products, orders, users)
+- Redis for session management and cart caching
+- Object storage (S3, Cloudinary) for product images
+
+**Rationale:** Relational database chosen for transactional integrity in e-commerce operations. The structured nature of products, orders, and subscriptions fits well with SQL schemas.
+
+### Third-Party Services (Planned)
+
+**Analytics:**
+- Google Analytics or privacy-focused alternative for user behavior tracking
+- E-commerce tracking for conversion funnel analysis
+
+**Search & Filtering:**
+- Algolia or Elasticsearch for advanced product search
+- Currently implemented with basic client-side filtering
+
+**Shipping & Logistics:**
+- ShipStation or EasyPost for shipping label generation
+- Real-time shipping rate calculation API
