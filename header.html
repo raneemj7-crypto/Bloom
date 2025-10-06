@@ -18,10 +18,10 @@
   <!-- Navigation Links with Enhanced Pills -->
   <nav class="nav nav-pills" id="mainNav">
     <ul class="nav-links">
-      <li><a href="about.html" class="nav-link nav-enhanced" data-page="about">Home</a></li>
+      <li><a href="about.html" class="nav-link nav-enhanced" data-page="home">Home</a></li>
       <li><a href="shop-page.html" class="nav-link nav-enhanced" data-page="shop">Shop</a></li>
       <li><a href="plans.html" class="nav-link nav-enhanced" data-page="plans">Plans</a></li>
-      <li><a href="about.html#about" class="nav-link nav-enhanced" data-page="about">About Us</a></li>
+      <li><a href="about.html#about" class="nav-link nav-enhanced" data-page="about-section">About Us</a></li>
       <li><a href="contact.html" class="nav-link nav-enhanced" data-page="contact">Contact Us</a></li>
     </ul>
   </nav>
@@ -99,7 +99,8 @@
       const linkPage = link.getAttribute('data-page');
       // Match current page with link
       if (linkPage === currentPage || 
-          (currentPage === 'index' && linkPage === 'about') ||
+          (currentPage === 'index' && linkPage === 'home') ||
+          (currentPage === 'about' && linkPage === 'home') ||
           (currentPage === 'shop-page' && linkPage === 'shop')) {
         link.classList.add('active');
       }

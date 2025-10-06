@@ -2,6 +2,16 @@
 
 ## Recent Changes
 
+**October 6, 2025 - Latest Updates**
+- ✅ **Header Logo Update**: Replaced with original generated logo (bloom_logo_trimmed.png)
+- ✅ **Unified Chatbot Design**: Implemented shop page checkbox-toggle chatbot style across all pages (about, plans, contact, cart, profile, wishlist) with AI response functionality
+- ✅ **Navigation Cleanup**: Removed emoji icons from all navigation links (Home, Shop, Plans, About Us, Contact Us)
+- ✅ **Active Page Indicator Fix**: Corrected navigation underline to highlight only one link per page
+- ✅ **Footer Consistency**: Updated footer hanging plant to match hero plant image (homeplant.png)
+- ✅ **Enhanced Cart Compatibility**: JavaScript now handles both .btn-add-cart and .add-to-cart button classes
+- ✅ **Wishlist Compatibility**: Support for both button-based (homepage) and checkbox-based (shop page) wishlist patterns
+- ✅ **Chatbot CSS Integration**: Complete chatbot styles (from shop.css) added to bloom-style.css for unified styling
+
 **October 6, 2025 - Interactive Features & Design Enhancements**
 - ✅ **Responsive Best Sellers Grid**: 4 columns on large screens, 2 on tablets, 1 on mobile
 - ✅ **Wider What We Offer Cards**: Increased from 45%/55% to 40%/60% split, max-width 1100px
