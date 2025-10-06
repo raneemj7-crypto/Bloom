@@ -890,26 +890,40 @@ ul {
   transform: scale(1.05);
 }
 
-.wishlist-btn {
+/* Wishlist checkbox (shop page style) */
+.wishlist-checkbox {
+  display: none;
+}
+
+.wishlist-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: white;
-  border: none;
-  width: 40px;
-  height: 40px;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background-color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  z-index: 2;
 }
 
-.wishlist-btn:hover {
-  background: var(--leaf-600);
-  color: white;
+.wishlist-icon svg {
+  color: var(--char-900);
+  transition: all 0.3s;
+}
+
+.wishlist-icon:hover {
+  background-color: var(--ivory-50);
+  transform: scale(1.1);
+}
+
+.wishlist-checkbox:checked + .wishlist-icon svg {
+  fill: #ff4444;
+  stroke: #ff4444;
 }
 
 .bestseller-info {

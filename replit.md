@@ -9,7 +9,7 @@
 - ✅ **Active Page Indicator Fix**: Corrected navigation underline to highlight only one link per page
 - ✅ **Footer Consistency**: Updated footer hanging plant to match hero plant image (homeplant.png)
 - ✅ **Enhanced Cart Compatibility**: JavaScript now handles both .btn-add-cart and .add-to-cart button classes
-- ✅ **Wishlist Compatibility**: Support for both button-based (homepage) and checkbox-based (shop page) wishlist patterns
+- ✅ **Wishlist Heart Icons**: Unified wishlist heart style across homepage and shop page - outline SVG hearts in white circular backgrounds positioned in top right corner
 - ✅ **Chatbot CSS Integration**: Complete chatbot styles (from shop.css) added to bloom-style.css for unified styling
 - ✅ **Mobile Hamburger Menu Fix**: Enhanced mobile navigation with proper display, z-index, hover effects, and full-width dropdown menu for screens under 768px
 
