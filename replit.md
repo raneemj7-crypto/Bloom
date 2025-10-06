@@ -2,6 +2,23 @@
 
 ## Recent Changes
 
+**October 6, 2025 - Interactive Features & Design Enhancements**
+- ✅ **Responsive Best Sellers Grid**: 4 columns on large screens, 2 on tablets, 1 on mobile
+- ✅ **Wider What We Offer Cards**: Increased from 45%/55% to 40%/60% split, max-width 1100px
+- ✅ **Section Dividers**: Added decorative leaf borders between all sections
+- ✅ **Enhanced About Section**: Gradient background, decorative leaf elements, styled content card
+- ✅ **Wishlist System**: Removed from header, created dedicated wishlist.html page, linked from profile
+- ✅ **Mobile Hamburger Menu**: Functional dropdown navigation for mobile devices
+- ✅ **Interactive Add to Cart**: Full cart management with localStorage persistence and notifications
+- ✅ **Wishlist Functionality**: Add/remove items with heart icon toggle, state persists across sessions
+- ✅ **AI Chatbot Widget**: Floating chat button on all pages with message functionality
+- ✅ **Shop Page Spacing**: Improved header and search bar spacing
+- ✅ **Profile Order Navigation**: "My Orders" link smoothly scrolls to "Recently Ordered" section
+- ✅ **Product Images**: All images from attached_assets integrated into pages
+- ✅ **Footer Enhancement**: Added hanging plant decoration with transparent green background
+- ✅ **Notification System**: Toast notifications for cart/wishlist actions
+- ✅ **Cart Badge**: Live item count display that updates in real-time
+
 **October 5, 2025 - Initial Implementation Complete**
 - ✅ Full HTML/CSS static website implementation
 - ✅ All 11 pages created with responsive design
@@ -12,15 +29,16 @@
 - ✅ Complete navigation structure across all pages
 
 **Pages Implemented:**
-- Home, Shop, Product Detail, Plan Details, Cart, Checkout, Contact, Feedback, Login, Register, Profile
+- Home (about.html), Shop (shop-page.html), Plans, Cart, Contact, Profile, Wishlist, Login, Register
 
 **Design Features:**
 - Gradient hero section with animated background elements
-- Product cards with hover animations
+- Product cards with hover animations and wishlist hearts
 - Filter buttons for shop categories
 - Responsive grid layouts (Flexbox/Grid)
 - Form styling with modern inputs
-- Comprehensive footer with quick links
+- Comprehensive footer with quick links and hanging plant decoration
+- Chatbot widget across all pages
 
 ## Overview
 
@@ -44,9 +62,10 @@ Preferred communication style: Simple, everyday language.
 **Technology Stack:**
 - Pure HTML5/CSS3 with semantic markup
 - CSS Variables for consistent theming (green/earth-tone color palette)
-- Vanilla JavaScript for interactivity and form validation
+- Vanilla JavaScript for interactivity (bloom-interactions.js)
+- LocalStorage for cart and wishlist persistence
 - Responsive design using CSS Flexbox and Grid
-- Optional utility framework support (Bootstrap or Tailwind CSS)
+- Font Awesome icons for UI elements
 
 **Design Pattern:**
 - Multi-page application (MPA) with static HTML pages
@@ -73,6 +92,7 @@ Preferred communication style: Simple, everyday language.
 **User Account:**
 - `login.html` - User authentication
 - `register.html` - New user registration
+- `wishlist.html` - User's saved favorite plants
 - `profile.html` - User dashboard with orders and saved plants
 
 **Design Decision:** Traditional multi-page structure chosen for SEO benefits and simplicity. Future enhancement could migrate to SPA with client-side routing for smoother navigation.
