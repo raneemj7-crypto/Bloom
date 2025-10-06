@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | My Wishlist</title>
+  <link rel="stylesheet" href="bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div id="navbar"></div>
+
+  <!-- Wishlist Section -->
+  <section class="wishlist-section">
+    <div class="container">
+      <h2 class="section-title">My Wishlist</h2>
+      <p class="section-subtitle">Your favorite plants saved for later</p>
+      
+      <div id="wishlistContainer">
+        <div class="wishlist-empty">
+          <i class="fas fa-heart"></i>
+          <h3>Your wishlist is empty</h3>
+          <p>Start adding plants you love to your wishlist!</p>
+          <a href="shop-page.html" class="btn btn-primary">Browse Plants</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Chatbot Widget -->
+  <button class="chatbot-btn" id="chatbotBtn">
+    <i class="fas fa-comment-dots"></i>
+  </button>
+  
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-header">
+      <h3>🌿 Plant Assistant</h3>
+      <button class="close-chatbot" id="closeChatbot">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message bot">
+        Hello! How can I help you with your plant care today? 🌱
+      </div>
+    </div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+      <button class="send-message" id="sendMessage">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="bloom-interactions.js"></script>
+  <script>
+    // Load navbar and footer
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+      
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+
+      // Load and display wishlist
+      loadWishlist();
+    });
+
+    function loadWishlist() {
+      const wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+      const container = document.getElementById('wishlistContainer');
+      
+      if (wishlist.length === 0) {
+        return; // Empty state already shown
+      }
+      
+      container.innerHTML = '<div class="wishlist-grid"></div>';
+      const grid = container.querySelector('.wishlist-grid');
+      
+      wishlist.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'bestseller-card';
+        card.innerHTML = `
+          <div class="bestseller-image">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="bestseller-info">
+            <h3 class="bestseller-name">${item.name}</h3>
+            <div class="bestseller-footer">
+              <span class="bestseller-price">SAR ${item.price}</span>
+              <button class="btn-add-cart" data-index="${index}">Add to Cart</button>
+            </div>
+            <button class="remove-wishlist" data-index="${index}">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      // Add event listeners
+      document.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = this.getAttribute('data-index');
+          const item = wishlist[index];
+          addToCart(item.name, `SAR ${item.price}`, item.image);
+        });
+      });
+      
+      document.querySelectorAll('.remove-wishlist').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = this.getAttribute('data-index');
+          wishlist.splice(index, 1);
+          localStorage.setItem('bloomWishlist', JSON.stringify(wishlist));
+          showNotification('Item removed from wishlist', 'info');
+          loadWishlist();
+        });
+      });
+    }
+  </script>
+</body>
+</html>

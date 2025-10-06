@@ -36,11 +36,11 @@
             <a href="#account" class="profile-nav-link active">
               <i class="fas fa-user"></i> Account Info
             </a>
-              <a href="#orders" class="profile-nav-link">
+              <a href="#orders" class="profile-nav-link" id="myOrdersLink">
               <i class="fas fa-shopping-basket"></i> My Orders
             </a>
 
-            <a href="#wishlist" class="profile-nav-link">
+            <a href="wishlist.html" class="profile-nav-link">
               <i class="fas fa-heart"></i> Wishlist
             </a>
             <a href="#addresses" class="profile-nav-link">
@@ -153,6 +153,30 @@
   <!-- Footer -->
   <div id="footer"></div>
 
+  <!-- Chatbot Widget -->
+  <button class="chatbot-btn" id="chatbotBtn">
+    <i class="fas fa-comment-dots"></i>
+  </button>
+  
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-header">
+      <h3>🌿 Plant Assistant</h3>
+      <button class="close-chatbot" id="closeChatbot">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message bot">
+        Hello! How can I help you with your plant care today? 🌱
+      </div>
+    </div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+      <button class="send-message" id="sendMessage">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="bloom-interactions.js"></script>
   <script>
     // Load navbar and footer
     document.addEventListener("DOMContentLoaded", () => {
@@ -167,6 +191,19 @@
         .then(data => {
           document.getElementById("footer").innerHTML = data;
         });
+
+      // Connect My Orders link with Recently Ordered section
+      const myOrdersLink = document.getElementById('myOrdersLink');
+      if (myOrdersLink) {
+        myOrdersLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          const recentOrders = document.getElementById('recent-orders');
+          if (recentOrders) {
+            recentOrders.scrollIntoView({ behavior: 'smooth' });
+            recentOrders.style.animation = 'highlight 1s ease';
+          }
+        });
+      }
     });
   </script>
 
