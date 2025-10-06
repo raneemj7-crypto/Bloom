@@ -1705,6 +1705,18 @@ ul {
   margin-bottom: 1rem;
 }
 
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.footer-logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
 .footer-col p {
   line-height: 1.6;
   opacity: 0.9;
@@ -2238,7 +2250,7 @@ ul {
 .footer::before {
   content: '';
   position: absolute;
-  top: -150px;
+  top: -80px;
   right: 2%;
   width: 200px;
   height: 200px;
