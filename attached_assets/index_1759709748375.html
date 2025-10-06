@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom - Refresh Every Room</title>
+    <meta http-equiv="refresh" content="0; url=login.html">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #395830, #4F7942, #659A54);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        .loader {
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <img src="images/bloom_logo_trimmed.png" alt="Bloom Logo" class="logo">
+        <h1>Welcome to Bloom</h1>
+        <p>Refresh Every Room...</p>
+    </div>
+</body>
+</html>

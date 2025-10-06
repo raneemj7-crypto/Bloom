@@ -1,0 +1,554 @@
+/*  original root colors */
+:root{
+ --leaf-700:#395830;
+ --leaf-600:#4F7942;
+ --leaf-500:#659A54;
+ --leaf-300:#7FB170;
+ --ivory-50:#FCFCF8;
+ --stone-400:#94948F;
+ --char-900:#222320;
+ --radius:0.7rem;
+ --shadow:0 4px 16px rgb(0 0 0 / .06);
+ --font:"Poppins", sans-serif;
+}
+
+/* Base styles from reference */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--ivory-50);
+  color: var(--char-900);
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Box container */
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  height: 640px;
+  background-color: #fff;
+  border-radius: 3.3rem;
+  box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+.inner-box {
+  position: absolute;
+  width: calc(100% - 4.1rem);
+  height: calc(100% - 4.1rem);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Forms section */
+.forms-wrap {
+  position: absolute;
+  height: 100%;
+  width: 45%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transition: 0.8s ease-in-out;
+}
+
+form {
+  max-width: 260px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  transition: opacity 0.02s 0.4s;
+}
+
+form.sign-up-form {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 0.5rem;
+}
+
+.logo h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--leaf-700);
+}
+
+/* Headings */
+.heading h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--char-900);
+  margin-bottom: 0.5rem;
+}
+
+.heading h6 {
+  color: var(--stone-400);
+  font-weight: 400;
+  font-size: 0.85rem;
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.toggle {
+  color: var(--leaf-500);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: var(--leaf-600);
+}
+
+/* Input fields */
+.input-wrap {
+  position: relative;
+  height: 37px;
+  margin-bottom: 2rem;
+}
+
+.input-field {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--stone-400);
+  padding: 0;
+  font-size: 0.95rem;
+  color: var(--char-900);
+  transition: 0.4s;
+}
+
+.input-wrap label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: var(--stone-400);
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.input-field.active {
+  border-bottom-color: var(--leaf-500);
+}
+
+.input-field.active + label {
+  font-size: 0.75rem;
+  top: -2px;
+  color: var(--leaf-500);
+}
+
+/* Password toggle eye */
+.toggle-eye {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--stone-400);
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 2;
+}
+
+/* Buttons */
+.sign-btn {
+  display: inline-block;
+  width: 100%;
+  height: 43px;
+  background-color: var(--leaf-500);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.sign-btn:hover {
+  background-color: var(--leaf-600);
+  transform: translateY(-2px);
+}
+
+/* Text links */
+.text {
+  color: var(--stone-400);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+.text-link {
+  color: var(--leaf-600);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.text-link:hover {
+  color: var(--leaf-300);
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -1rem 0 1rem 0;
+}
+
+/* Remember me checkbox */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+}
+
+.remember-me input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  accent-color: var(--leaf-600);
+}
+
+.remember-me label {
+  font-size: 0.8rem;
+  color: var(--stone-400);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Terms agreement checkbox */
+.terms-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.terms-agreement input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: var(--leaf-600);
+  flex-shrink: 0;
+}
+
+.terms-agreement label {
+  font-size: 0.8rem;
+  color: var(--stone-400);
+  line-height: 1.5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.terms-agreement label a {
+  color: var(--leaf-600);
+  text-decoration: none;
+}
+
+.terms-agreement label a:hover {
+  color: var(--leaf-300);
+  text-decoration: underline;
+}
+
+/* Form switching */
+main.sign-up-mode form.sign-in-form {
+  opacity: 0;
+  pointer-events: none;
+}
+
+main.sign-up-mode form.sign-up-form {
+  opacity: 1;
+  pointer-events: all;
+}
+
+main.sign-up-mode .forms-wrap {
+  left: 55%;
+}
+
+main.sign-up-mode .carousel {
+  left: 0%;
+}
+
+/* Right side content */
+.carousel {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 50%;
+  top: 0;
+  background: radial-gradient(circle at 30% 30%, var(--leaf-600) 0%, var(--leaf-700) 100%);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #fff;
+  transition: 0.8s ease-in-out;
+}
+
+.hero-copy {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-copy h2 {
+  font-size: 2.4rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+blockquote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+blockquote footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+blockquote img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.trusted {
+  letter-spacing: 2px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.logo-row img {
+  width: 70px;
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 850px) {
+  .box {
+    height: auto;
+    max-width: 550px;
+    overflow: hidden;
+  }
+
+  .inner-box {
+    position: static;
+    transform: none;
+    width: revert;
+    height: revert;
+    padding: 2rem;
+  }
+
+  .forms-wrap {
+    position: revert;
+    width: 100%;
+    height: auto;
+  }
+
+  form {
+    max-width: revert;
+    padding: 1.5rem 2.5rem 2rem;
+    transition: transform 0.8s ease-in-out, opacity 0.45s linear;
+  }
+
+  .heading {
+    margin: 2rem 0;
+  }
+
+  form.sign-up-form {
+    transform: translateX(100%);
+  }
+
+  main.sign-up-mode form.sign-in-form {
+    transform: translateX(-100%);
+  }
+
+  main.sign-up-mode form.sign-up-form {
+    transform: translateX(0%);
+  }
+
+  .carousel {
+    position: revert;
+    height: auto;
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+  }
+
+  .hero-copy h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 530px) {
+  main {
+    padding: 1rem;
+  }
+
+  .box {
+    border-radius: 2rem;
+  }
+
+  .inner-box {
+    padding: 1rem;
+  }
+
+  .carousel {
+    padding: 1.5rem 1rem;
+    border-radius: 1.6rem;
+  }
+
+  form {
+    padding: 1rem 2rem 1.5rem;
+  }
+
+  .hero-copy h2 {
+    font-size: 1.6rem;
+  }
+}
+
+.field {
+  position: relative;
+  margin-bottom: 1rem;      /* enough room for the error text */
+}
+
+/* hide by default */
+.error-msg {
+  position: absolute;
+  left: 0;
+  bottom: -1rem;          /* pulls it just below the input border */
+  display: none;            /* hidden by default */
+  color: #d64541;           /* red text */
+  font-size: 0.7rem;
+  line-height: 1.20;
+}
+
+
+/* show error only when field is invalid AND NOT empty */
+.input-field:invalid:not(:placeholder-shown) ~ .error-msg {
+  display: block;
+}
+
+/* red underline on invalid (once they’ve typed something) */
+.input-field:invalid:not(:placeholder-shown) {
+  border-bottom-color: #d64541;
+}
+.services {
+  padding: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.services li {
+  margin-bottom: 0.8rem;
+}
+.hero-copy h2 {
+    font-weight:bolder ;
+}
+
+ body {
+  background: linear-gradient(
+    158deg,
+    var(--ivory-50) 0%,
+    var(--leaf-300) 100%
+  );
+}
+/* Dialog backdrop and content */
+dialog {
+  border: none;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  width: 90%;
+  align-items: center;
+  margin: 0;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,0.4);
+}
+
+/* Modal body scrolling if too tall */
+.modal-body {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+/* Close button */
+.modal-close {
+  background: var(--leaf-500);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.modal-close:hover {
+  background: var(--leaf-600);
+}

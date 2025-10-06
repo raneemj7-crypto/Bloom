@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="bloom-style.css">
+
+<!-- Header with Creative Enhancements -->
+<header class="header creative-header">
+  <!-- Floating Leaf Decorations -->
+  <span class="leaf-decoration leaf-1">🍃</span>
+  <span class="leaf-decoration leaf-2">🌿</span>
+  
+  <!-- Logo with Glow Effect -->
+  <div class="logo logo-enhanced">
+    <a href="about.html">
+      <img src="images/bloomlogo.png" alt="Bloom Logo" class="logo-image logo-glow">
+    </a>
+    <div class="logo-tagline">Refresh Every Room</div>
+  </div>
+
+  <!-- Navigation Links with Enhanced Pills -->
+  <nav class="nav nav-pills" id="mainNav">
+    <ul class="nav-links">
+      <li><a href="about.html" class="nav-link nav-enhanced" data-page="about"><span class="nav-text">Home</span><span class="nav-icon">🏠</span></a></li>
+      <li><a href="shop-page.html" class="nav-link nav-enhanced" data-page="shop"><span class="nav-text">Shop</span><span class="nav-icon">🛍️</span></a></li>
+      <li><a href="plans.html" class="nav-link nav-enhanced" data-page="plans"><span class="nav-text">Plans</span><span class="nav-icon">📋</span></a></li>
+      <li><a href="about.html#about" class="nav-link nav-enhanced" data-page="about"><span class="nav-text">About Us</span><span class="nav-icon">ℹ️</span></a></li>
+      <li><a href="contact.html" class="nav-link nav-enhanced" data-page="contact"><span class="nav-text">Contact Us</span><span class="nav-icon">📞</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Icons -->
+  <div class="nav-icons">
+    <a href="cart.html" class="icon-btn cart-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span class="badge">0</span>
+    </a>
+    <a href="#" class="icon-btn wishlist-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </a>
+    <a href="profile.html" class="icon-btn profile-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menuToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+</header>
+
+<script>
+  // Mobile menu toggle and active page indicator
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.querySelector('.nav');
+    
+    // Mobile menu toggle
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        // Toggle icon between hamburger and X
+        const svg = this.querySelector('svg');
+        if (nav.classList.contains('active')) {
+          svg.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+        } else {
+          svg.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+        }
+      });
+      
+      // Close menu when clicking nav link on mobile
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768) {
+            nav.classList.remove('active');
+            const svg = toggle.querySelector('svg');
+            svg.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+          }
+        });
+      });
+    }
+    
+    // Set active page indicator
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'about';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute('data-page');
+      // Match current page with link
+      if (linkPage === currentPage || 
+          (currentPage === 'index' && linkPage === 'about') ||
+          (currentPage === 'shop-page' && linkPage === 'shop')) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>

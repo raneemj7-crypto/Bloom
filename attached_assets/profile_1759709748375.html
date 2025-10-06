@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | My Profile</title>
+  <link rel="stylesheet" href="bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div id="navbar"></div>
+
+  <!-- Profile Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>My Profile</h1>
+      <p>Manage your account and preferences</p>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="container">
+      <div class="profile-content">
+        
+        <!-- Profile Sidebar -->
+        <div class="profile-sidebar">
+          <div class="profile-avatar">
+            <img src="images/imagesA.png" alt="User Avatar">
+            <button class="btn btn-secondary btn-sm">Change Photo</button>
+          </div>
+          
+          <nav class="profile-nav">
+            <a href="#account" class="profile-nav-link active">
+              <i class="fas fa-user"></i> Account Info
+            </a>
+              <a href="#orders" class="profile-nav-link">
+              <i class="fas fa-shopping-basket"></i> My Orders
+            </a>
+
+            <a href="#wishlist" class="profile-nav-link">
+              <i class="fas fa-heart"></i> Wishlist
+            </a>
+            <a href="#addresses" class="profile-nav-link">
+              <i class="fas fa-map-marker-alt"></i> Addresses
+            </a>
+            <a href="#settings" class="profile-nav-link">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <a href="login.html" class="profile-nav-link logout">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </nav>
+        </div>
+
+        <!-- Profile Main Content -->
+        <div class="profile-main">
+          
+          <!-- Account Information -->
+          <div class="profile-card">
+            <h2>Account Information</h2>
+            <form class="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" value="Raneem" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" value="Abumoustafa" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="raneem@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" value="+966 500 000 000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="plan">Current Plan</label>
+                <select id="plan">
+                  <option>Free Plan</option>
+                  <option selected>Premium Plan</option>
+                  <option>Family Plan</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="profile-card">
+            <section class="recent-orders" id="recent-orders">
+            <h2>Recent Orders</h2>
+            <div class="orders-list">
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12345</h4>
+                  <p>Placed on Jan 15, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge delivered">Delivered</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 450</p>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12344</h4>
+                  <p>Placed on Jan 10, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge shipping">Shipping</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 320</p>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12343</h4>
+                  <p>Placed on Jan 5, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge delivered">Delivered</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 180</p>
+                </div>
+              </div>
+            </div>
+            <a href="#orders" class="btn btn-secondary">View All Orders</a>
+            </section>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script>
+    // Load navbar and footer
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+      
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    });
+  </script>
+
+</body>
+</html>
