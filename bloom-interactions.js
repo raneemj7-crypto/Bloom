@@ -4,6 +4,10 @@
 let cart = JSON.parse(localStorage.getItem('bloomCart')) || [];
 let wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
 
+// Expose to window for global access
+window.cart = cart;
+window.wishlist = wishlist;
+
 // Update cart badge
 function updateCartBadge() {
   const badge = document.querySelector('.cart-btn .badge');
@@ -16,6 +20,9 @@ function updateCartBadge() {
 
 // Add to Cart Function
 function addToCart(productName, price, image) {
+  // Reload from localStorage to ensure consistency
+  cart = JSON.parse(localStorage.getItem('bloomCart')) || [];
+  
   const existingItem = cart.find(item => item.name === productName);
   
   if (existingItem) {
@@ -30,12 +37,16 @@ function addToCart(productName, price, image) {
   }
   
   localStorage.setItem('bloomCart', JSON.stringify(cart));
+  window.cart = cart; // Update global reference
   updateCartBadge();
   showNotification(`${productName} added to cart!`, 'success');
 }
 
 // Add to Wishlist Function
 function addToWishlist(productName, price, image) {
+  // Reload from localStorage to ensure consistency
+  wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+  
   const existingItem = wishlist.find(item => item.name === productName);
   
   if (!existingItem) {
@@ -45,6 +56,7 @@ function addToWishlist(productName, price, image) {
       image: image
     });
     localStorage.setItem('bloomWishlist', JSON.stringify(wishlist));
+    window.wishlist = wishlist; // Update global reference
     showNotification(`${productName} added to wishlist!`, 'success');
   } else {
     showNotification(`${productName} is already in your wishlist!`, 'info');
@@ -86,7 +98,27 @@ function initializeCartButtons() {
 
 // Initialize Wishlist Buttons
 function initializeWishlistButtons() {
+  // First, set initial heart states based on saved wishlist
+  const savedWishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+  
   document.querySelectorAll('.wishlist-btn').forEach(button => {
+    const card = button.closest('.bestseller-card') || button.closest('.product-card');
+    if (card) {
+      const name = card.querySelector('.bestseller-name, .product-name')?.textContent || 'Product';
+      const isInWishlist = savedWishlist.some(item => item.name === name);
+      const icon = button.querySelector('i');
+      
+      // Set initial state
+      if (isInWishlist) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+      }
+    }
+    
+    // Add click handler
     button.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -98,13 +130,26 @@ function initializeWishlistButtons() {
         const image = card.querySelector('img')?.src || '';
         
         const icon = this.querySelector('i');
+        const wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+        const existingIndex = wishlist.findIndex(item => item.name === name);
+        
         if (icon.classList.contains('far')) {
+          // Add to wishlist
           icon.classList.remove('far');
           icon.classList.add('fas');
           addToWishlist(name, price, image);
         } else {
+          // Remove from wishlist
           icon.classList.remove('fas');
           icon.classList.add('far');
+          
+          if (existingIndex > -1) {
+            const updatedWishlist = wishlist.filter(item => item.name !== name);
+            localStorage.setItem('bloomWishlist', JSON.stringify(updatedWishlist));
+            
+            // Update the global wishlist variable
+            window.wishlist = updatedWishlist;
+          }
           showNotification(`${name} removed from wishlist!`, 'info');
         }
       }
@@ -168,8 +213,25 @@ function addChatMessage(text, sender) {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  updateCartBadge();
-  initializeCartButtons();
-  initializeWishlistButtons();
+  // Wait a bit for header to load, then update cart badge
+  setTimeout(() => {
+    updateCartBadge();
+  }, 100);
+  
+  // Initialize buttons after a slight delay to ensure header is loaded
+  setTimeout(() => {
+    initializeCartButtons();
+    initializeWishlistButtons();
+  }, 150);
+  
   initializeChatbot();
+  
+  // Also update cart badge when header is loaded
+  const observer = new MutationObserver(() => {
+    if (document.querySelector('.cart-btn .badge')) {
+      updateCartBadge();
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 });
