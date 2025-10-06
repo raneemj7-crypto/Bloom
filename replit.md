@@ -3,6 +3,7 @@
 ## Recent Changes
 
 **October 6, 2025 - Latest Updates**
+- ✅ **Footer Enhancements**: Repositioned hanging plant to right side (2% from edge), increased transparency to 70% (0.3 opacity), replaced emoji with actual logo image, added 6rem spacing above footer
 - ✅ **Logo Structure Redesign**: Updated header logo to display image on left + "Bloom" H3 heading + "Refresh Every Room" tagline (instead of single logo image)
 - ✅ **Hamburger Menu Removal**: Completely removed mobile hamburger menu - all navigation elements now stay visible on mobile using flex-wrap
 - ✅ **Wishlist JavaScript Fix**: Added guards to prevent crashes when encountering header wishlist button (which uses SVG instead of Font Awesome icons)
