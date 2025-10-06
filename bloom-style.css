@@ -2190,7 +2190,7 @@ ul {
   right: 10%;
   width: 200px;
   height: 200px;
-  background: url('/images/hanging-plant.webp') no-repeat center center;
+  background: url('images/homeplant.png') no-repeat center center;
   background-size: contain;
   z-index: 10;
   opacity: 0.9;
