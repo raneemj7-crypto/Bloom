@@ -3,197 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom - Refresh Every Room with Plants</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Bloom - Refresh Every Room</title>
+    <meta http-equiv="refresh" content="0; url=login.html">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #395830, #4F7942, #659A54);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        .loader {
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="attached_assets/bloom_logo_trimmed_1759704631074.png" alt="Bloom Logo">
-                    <h1>BLOOM</h1>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="plan-details.html">Plans</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Bring the Joy of Greenery Home</h2>
-                <p>Discover, nurture, and grow with Bloom - Your complete plant care companion</p>
-                <a href="shop.html" class="btn">Shop Plants Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Why Choose Bloom?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🌱</div>
-                    <h3>Curated Collection</h3>
-                    <p>Handpicked indoor plants, succulents, and tropical varieties perfect for any space</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3>Subscription Plans</h3>
-                    <p>Monthly plant boxes and care subscriptions delivered to your door</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Assistant</h3>
-                    <p>Get personalized plant recommendations and care advice instantly</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Care Guides</h3>
-                    <p>Step-by-step tutorials and automated watering reminders</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background-color: var(--white);">
-        <div class="container">
-            <h2 class="section-title">Best Selling Plants</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="attached_assets/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg_1759704562813.webp" alt="Snake Plant" class="product-image">
-                    <div class="product-info">
-                        <h3>Serene Snake Plant</h3>
-                        <p class="price">$45.99</p>
-                        <p class="description">Low-maintenance air purifier perfect for beginners</p>
-                        <a href="product.html" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="attached_assets/Peace_Lily_Plant_Mud_Pot.jpg_1759704563906.webp" alt="Peace Lily" class="product-image">
-                    <div class="product-info">
-                        <h3>Peace Lily</h3>
-                        <p class="price">$39.99</p>
-                        <p class="description">Elegant blooming plant that thrives in low light</p>
-                        <a href="product.html" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="attached_assets/Zamia_Plant_White_Ceramic_Pot.jpg_1759704559375.webp" alt="Zamia Plant" class="product-image">
-                    <div class="product-info">
-                        <h3>Zamia Plant</h3>
-                        <p class="price">$52.99</p>
-                        <p class="description">Stunning tropical beauty in white ceramic pot</p>
-                        <a href="product.html" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="attached_assets/Spiral_Lucky_Bamboo_in_Premium_Vase.jpg_1759704561379.webp" alt="Lucky Bamboo" class="product-image">
-                    <div class="product-info">
-                        <h3>Spiral Lucky Bamboo</h3>
-                        <p class="price">$34.99</p>
-                        <p class="description">Bring good fortune with this unique spiral design</p>
-                        <a href="product.html" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Subscription Plans</h2>
-            <div class="plan-cards">
-                <div class="plan-card">
-                    <h3>Monthly Box</h3>
-                    <div class="plan-price">$29<span>/month</span></div>
-                    <ul class="plan-features">
-                        <li>1 curated plant per month</li>
-                        <li>Care instructions included</li>
-                        <li>Surprise plant varieties</li>
-                        <li>Free shipping</li>
-                    </ul>
-                    <a href="plan-details.html" class="btn btn-primary">Subscribe Now</a>
-                </div>
-                <div class="plan-card featured">
-                    <h3>Care Subscription</h3>
-                    <div class="plan-price">$49<span>/month</span></div>
-                    <ul class="plan-features">
-                        <li>2 plants per month</li>
-                        <li>AI care assistant access</li>
-                        <li>Care supplies included</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="plan-details.html" class="btn btn-primary">Subscribe Now</a>
-                </div>
-                <div class="plan-card">
-                    <h3>Premium</h3>
-                    <div class="plan-price">$89<span>/month</span></div>
-                    <ul class="plan-features">
-                        <li>3 premium plants monthly</li>
-                        <li>Exclusive rare varieties</li>
-                        <li>Complete care kit</li>
-                        <li>Personal plant consultant</li>
-                    </ul>
-                    <a href="plan-details.html" class="btn btn-primary">Subscribe Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--secondary-green) 100%); color: var(--white);">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: var(--white); margin-bottom: 1rem;">Ready to Start Your Plant Journey?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Join thousands of happy plant parents today</p>
-            <a href="register.html" class="btn">Create Free Account</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Bloom</h3>
-                    <p>Your trusted partner in bringing the joy of greenery into every home. From beginners to experts, we help your plants thrive.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="shop.html">Shop Plants</a></li>
-                        <li><a href="plan-details.html">Subscription Plans</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="feedback.html">Send Feedback</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Customer Care</h3>
-                    <ul>
-                        <li><a href="#">Care Guides</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns Policy</a></li>
-                        <li><a href="profile.html">My Account</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Stay Connected</h3>
-                    <p>Follow us for plant care tips and inspiration</p>
-                    <p style="margin-top: 1rem;">📧 hello@bloom.com<br>📞 1-800-BLOOM</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bloom. All rights reserved. Refresh Every Room. 🌿</p>
-            </div>
-        </div>
-    </footer>
+    <div class="loader">
+        <img src="images/bloom_logo_trimmed.png" alt="Bloom Logo" class="logo">
+        <h1>Welcome to Bloom</h1>
+        <p>Refresh Every Room...</p>
+    </div>
 </body>
 </html>

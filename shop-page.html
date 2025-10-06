@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom | Shoping page </title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+      <!-- Navigation -->
+    <div id="navbar"></div>
+    <script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        });
+    </script>
+
+    <!-- Filter Toggle Button for Mobile -->
+    <input type="checkbox" id="filter-toggle" class="filter-toggle-checkbox">
+    
+    <div class="filter-toggle-wrapper">
+        <label for="filter-toggle" class="filter-toggle-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span>Filter</span>
+        </label>
+    </div>
+
+    <!-- Overlay for closing filter on mobile -->
+    <label for="filter-toggle" class="filter-overlay"></label>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-title-wrapper">
+                <h3 class="sidebar-title">Filter</h3>
+                <label for="filter-toggle" class="filter-close-btn">✕</label>
+            </div>
+            
+            <div class="filter-section">
+                <h4 class="filter-heading">Plant Type</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox" checked>
+                    <span>Indoor Plants</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Outdoor Plants</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Succulents</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Artificial Plants</span>
+                </label>
+            </div>
+
+            <div class="filter-section">
+                <h4 class="filter-heading">Price Range</h4>
+                <div class="price-inputs">
+                    <input type="number" placeholder="Min" class="price-input" min="50" max="500">
+                    <input type="number" placeholder="Max" class="price-input" min="50" max="500">
+                </div>
+                <button class="set-price-btn">Set price</button>
+            </div>
+
+            <div class="filter-section">
+                <h4 class="filter-heading">Size</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Small</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Medium</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Large</span>
+                </label>
+            </div>
+
+            <div class="filter-section">
+                <h4 class="filter-heading">Care Level</h4>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Easy</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Moderate</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" class="category-checkbox">
+                    <span>Expert</span>
+                </label>
+            </div>
+
+            <div class="promo-card">
+                <h3>GET 30% OFF</h3>
+                <p>Share your referral code and get discount!</p>
+                <button class="share-btn">Share</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" placeholder="Search plants..." class="search-input">
+                <button class="clear-btn">✕</button>
+            </div>
+
+            <!-- Search Result -->
+            <div class="search-result">
+                All Plants
+            </div>
+
+            <!-- View Toggle Radio Inputs -->
+            <input type="radio" name="view" id="view-large" class="view-radio">
+            <input type="radio" name="view" id="view-grid" class="view-radio" checked>
+            <input type="radio" name="view" id="view-list" class="view-radio">
+            
+            <!-- Sort Options -->
+            <div class="sort-bar">
+                <span class="sort-label">Sort</span>
+                <button class="sort-btn active">Relevance</button>
+                <button class="sort-btn">Popular</button>
+                <button class="sort-btn">Most New</button>
+                
+                <div class="dropdown">
+                    <button class="sort-btn dropdown-btn">Price ▼</button>
+                    <div class="dropdown-content">
+                        <a href="#">Price: Low to High</a>
+                        <a href="#">Price: High to Low</a>
+                    </div>
+                </div>
+                
+                <!-- View Toggle Buttons -->
+                <div class="view-toggle">
+                    <label for="view-large" class="view-btn" title="Large Grid View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        </svg>
+                    </label>
+                    
+                    <label for="view-grid" class="view-btn" title="Grid View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        </svg>
+                    </label>
+                    
+                    <label for="view-list" class="view-btn" title="List View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <rect x="3" y="4" width="3" height="4" fill="currentColor"></rect>
+                            <rect x="3" y="10" width="3" height="4" fill="currentColor"></rect>
+                            <rect x="3" y="16" width="3" height="4" fill="currentColor"></rect>
+                        </svg>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Bonsai-Plant-Ceramic-Pot.jpg.webp" alt="Bonsai Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-1" class="wishlist-checkbox">
+                        <label for="wishlist-1" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-1" class="product-link">
+                        <div class="product-name">Bonsai Plant Ceramic Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(124)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 300</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Indoor_Epipremnum_Aaureum_Money_Plant.jpg.webp" alt="Money Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-2" class="wishlist-checkbox">
+                        <label for="wishlist-2" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-2" class="product-link">
+                        <div class="product-name">Indoor Epipremnum Aureum Money Plant</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(89)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 280</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Zamia_Plant_White_Ceramic_Pot.jpg.webp" alt="Zamia Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-3" class="wishlist-checkbox">
+                        <label for="wishlist-3" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-3" class="product-link">
+                        <div class="product-name">Zamia Plant White Ceramic Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(76)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 320</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Artificial-Green-Succulent-Garden.jpg.webp" alt="Succulent Garden" class="product-image">
+                        <input type="checkbox" id="wishlist-4" class="wishlist-checkbox">
+                        <label for="wishlist-4" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-4" class="product-link">
+                        <div class="product-name">Artificial Green Succulent Garden</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(102)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 250</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg.webp" alt="Snake Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-5" class="wishlist-checkbox">
+                        <label for="wishlist-5" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-5" class="product-link">
+                        <div class="product-name">Serene Snake Plant in Grey Ceramic Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(145)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 220</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Spiral_Lucky_Bamboo_in_Premium_Vase.jpg.webp" alt="Lucky Bamboo" class="product-image">
+                        <input type="checkbox" id="wishlist-6" class="wishlist-checkbox">
+                        <label for="wishlist-6" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-6" class="product-link">
+                        <div class="product-name">Spiral Lucky Bamboo in Premium Vase</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(98)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 390</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Gardenia_Plant_Plastic_Pot.jpg.webp" alt="Gardenia Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-7" class="wishlist-checkbox">
+                        <label for="wishlist-7" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-7" class="product-link">
+                        <div class="product-name">Gardenia Plant Plastic Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(67)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 210</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Peace_Lily_Plant_Mud_Pot.jpg.webp" alt="Peace Lily" class="product-image">
+                        <input type="checkbox" id="wishlist-8" class="wishlist-checkbox">
+                        <label for="wishlist-8" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-8" class="product-link">
+                        <div class="product-name">Peace Lily Plant Mud Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(134)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 250</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Areca_Plant_White_Pot.jpg.webp" alt="Areca Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-9" class="wishlist-checkbox">
+                        <label for="wishlist-9" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-9" class="product-link">
+                        <div class="product-name">Areca Plant White Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(88)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 450</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Artificial_Kentia_Palm_Plant.jpg.webp" alt="Kentia Palm" class="product-image">
+                        <input type="checkbox" id="wishlist-10" class="wishlist-checkbox">
+                        <label for="wishlist-10" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-10" class="product-link">
+                        <div class="product-name">Artificial Kentia Palm Plant</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(71)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 420</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/GreenOasisYukaPlant.jpg.webp" alt="Yuka Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-11" class="wishlist-checkbox">
+                        <label for="wishlist-11" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-11" class="product-link">
+                        <div class="product-name">Green Oasis | Yuka Plant</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(95)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 380</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="/images/Hanging_Epipremnum_Aureum_Plant_Pot.jpg.webp" alt="Hanging Money Plant" class="product-image">
+                        <input type="checkbox" id="wishlist-12" class="wishlist-checkbox">
+                        <label for="wishlist-12" class="wishlist-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <a href="#product-12" class="product-link">
+                        <div class="product-name">Hanging Epipremnum Aureum Plant Pot</div>
+                        <div class="product-rating">
+                            <span class="stars">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="review-count">(112)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">SAR 230</span>
+                            <button class="add-to-cart">Add to cart</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Detail Modals -->
+    <div id="product-1" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Bonsai-Plant-Ceramic-Pot.jpg.webp" alt="Bonsai Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Bonsai Plant Ceramic Pot</h2>
+                    <p class="modal-description">A beautiful miniature bonsai tree in an elegant ceramic pot. Perfect for adding zen aesthetics to any indoor space. This carefully cultivated bonsai requires minimal care and brings natural beauty to your home or office.</p>
+                    
+                    <div class="modal-price-section">
+                        <span class="modal-price">SAR 450</span>
+                    </div>
+
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-1" id="qty-1-dec" class="qty-radio">
+                            <input type="radio" name="qty-1" id="qty-1-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-1" id="qty-1-inc" class="qty-radio">
+                            
+                            <label for="qty-1-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-1-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+
+                    <button class="modal-add-to-cart">Add to cart</button>
+
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Light</span>
+                                <span class="care-value">Bright Indirect</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Water</span>
+                                <span class="care-value">Moderate</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path>
+                                <path d="M12 2v8"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Humidity</span>
+                                <span class="care-value">Medium</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Fertilizing</span>
+                                <span class="care-value">Monthly</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+                                <path d="M8.5 2h7"></path>
+                                <path d="M7 16h10"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Re-potting</span>
+                                <span class="care-value">2-3 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repeat similar modal structure for products 2-12 with different content -->
+    <!-- For brevity, I'll include one more complete modal and indicate the pattern -->
+    
+    <div id="product-2" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Indoor_Epipremnum_Aaureum_Money_Plant.jpg.webp" alt="Money Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Indoor Epipremnum Aureum Money Plant</h2>
+                    <p class="modal-description">Also known as Golden Pothos or Devil's Ivy, this versatile trailing plant is perfect for beginners. It purifies air and thrives in various light conditions, making it ideal for any indoor space.</p>
+                    
+                    <div class="modal-price-section">
+                        <span class="modal-price">SAR 270</span>
+                    </div>
+
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-2" id="qty-2-dec" class="qty-radio">
+                            <input type="radio" name="qty-2" id="qty-2-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-2" id="qty-2-inc" class="qty-radio">
+                            
+                            <label for="qty-2-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-2-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+
+                    <button class="modal-add-to-cart">Add to cart</button>
+
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Light</span>
+                                <span class="care-value">Low to Bright</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Water</span>
+                                <span class="care-value">Low</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path>
+                                <path d="M12 2v8"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Humidity</span>
+                                <span class="care-value">Low to Medium</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Fertilizing</span>
+                                <span class="care-value">Monthly</span>
+                            </div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+                                <path d="M8.5 2h7"></path>
+                                <path d="M7 16h10"></path>
+                            </svg>
+                            <div class="care-info">
+                                <span class="care-label">Re-potting</span>
+                                <span class="care-value">1-2 Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products 3-12 Modals -->
+    <div id="product-3" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Zamia_Plant_White_Ceramic_Pot.jpg.webp" alt="Zamia Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Zamia Plant White Ceramic Pot</h2>
+                    <p class="modal-description">Elegant Zamia plant in a pristine white ceramic pot. This low-maintenance plant features glossy green fronds and adds a tropical touch to any interior space.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 320</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-3" id="qty-3-dec" class="qty-radio">
+                            <input type="radio" name="qty-3" id="qty-3-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-3" id="qty-3-inc" class="qty-radio">
+                            <label for="qty-3-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-3-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Bright Indirect</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Medium</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Bi-monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">2-3 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-4" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Artificial-Green-Succulent-Garden.jpg.webp" alt="Succulent Garden" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Artificial Green Succulent Garden</h2>
+                    <p class="modal-description">A stunning collection of artificial succulents arranged in a decorative planter. Maintenance-free beauty that looks realistic and never needs watering.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 250</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-4" id="qty-4-dec" class="qty-radio">
+                            <input type="radio" name="qty-4" id="qty-4-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-4" id="qty-4-inc" class="qty-radio">
+                            <label for="qty-4-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-4-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Any</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">None</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Any</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Cleaning</span><span class="care-value">Dust Monthly</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-5" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg.webp" alt="Snake Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Serene Snake Plant in Grey Ceramic Pot</h2>
+                    <p class="modal-description">Also known as Sansevieria, this hardy plant is perfect for beginners. It purifies air, tolerates neglect, and looks stunning in its modern grey ceramic pot.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 280</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-5" id="qty-5-dec" class="qty-radio">
+                            <input type="radio" name="qty-5" id="qty-5-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-5" id="qty-5-inc" class="qty-radio">
+                            <label for="qty-5-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-5-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Low to Bright</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Very Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Bi-monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">3-5 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-6" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Spiral_Lucky_Bamboo_in_Premium_Vase.jpg.webp" alt="Lucky Bamboo" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Spiral Lucky Bamboo in Premium Vase</h2>
+                    <p class="modal-description">Beautifully spiraled lucky bamboo in an elegant vase. Symbolizes good fortune and prosperity. Easy to care for and perfect for home or office.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 220</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-6" id="qty-6-dec" class="qty-radio">
+                            <input type="radio" name="qty-6" id="qty-6-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-6" id="qty-6-inc" class="qty-radio">
+                            <label for="qty-6-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-6-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Indirect Bright</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Keep Submerged</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Medium</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Water Change</span><span class="care-value">Weekly</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-7" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Gardenia_Plant_Plastic_Pot.jpg.webp" alt="Gardenia" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Gardenia Plant Plastic Pot</h2>
+                    <p class="modal-description">Fragrant gardenia with glossy leaves and beautiful white blooms. A classic choice for adding elegance and wonderful scent to your indoor or outdoor space.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 450</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-7" id="qty-7-dec" class="qty-radio">
+                            <input type="radio" name="qty-7" id="qty-7-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-7" id="qty-7-inc" class="qty-radio">
+                            <label for="qty-7-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-7-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Bright Indirect</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Moderate</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">High</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Bi-weekly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">1-2 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-8" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Peace_Lily_Plant_Mud_Pot.jpg.webp" alt="Peace Lily" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Peace Lily Plant Mud Pot</h2>
+                    <p class="modal-description">Elegant peace lily in a rustic mud pot. Known for its air-purifying qualities and beautiful white flowers. Thrives in low light and adds serenity to any space.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 240</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-8" id="qty-8-dec" class="qty-radio">
+                            <input type="radio" name="qty-8" id="qty-8-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-8" id="qty-8-inc" class="qty-radio">
+                            <label for="qty-8-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-8-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Low to Medium</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Moderate</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Medium to High</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">1-2 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-9" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Areca_Plant_White_Pot.jpg.webp" alt="Areca Palm" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Areca Plant White Pot</h2>
+                    <p class="modal-description">Graceful areca palm in a clean white pot. Features feathery fronds that add tropical elegance. Excellent air purifier and perfect for brightening any corner.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 380</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-9" id="qty-9-dec" class="qty-radio">
+                            <input type="radio" name="qty-9" id="qty-9-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-9" id="qty-9-inc" class="qty-radio">
+                            <label for="qty-9-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-9-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Bright Indirect</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Moderate</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Medium to High</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">2-3 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-10" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Artificial_Kentia_Palm_Plant.jpg.webp" alt="Kentia Palm" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Artificial Kentia Palm Plant</h2>
+                    <p class="modal-description">Lifelike artificial Kentia palm that brings tropical vibes without any maintenance. Perfect for spaces with low light or for those who want hassle-free greenery.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 420</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-10" id="qty-10-dec" class="qty-radio">
+                            <input type="radio" name="qty-10" id="qty-10-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-10" id="qty-10-inc" class="qty-radio">
+                            <label for="qty-10-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-10-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Any</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">None</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Any</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Cleaning</span><span class="care-value">Dust Monthly</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-11" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/GreenOasisYukaPlant.jpg.webp" alt="Yuka Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Green Oasis | Yuka Plant</h2>
+                    <p class="modal-description">Striking Yucca plant that creates a green oasis in your space. Drought-tolerant and architectural, perfect for modern interiors and low-maintenance plant lovers.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 380</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-11" id="qty-11-dec" class="qty-radio">
+                            <input type="radio" name="qty-11" id="qty-11-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-11" id="qty-11-inc" class="qty-radio">
+                            <label for="qty-11-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-11-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Bright Direct</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Bi-monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">3-4 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-12" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <a href="#" class="close-btn">✕</a>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="/images/Hanging_Epipremnum_Aureum_Plant_Pot.jpg.webp" alt="Hanging Money Plant" class="modal-main-image">
+                </div>
+                <div class="modal-right">
+                    <h2 class="modal-title">Hanging Epipremnum Aureum Plant Pot</h2>
+                    <p class="modal-description">Beautiful hanging money plant with cascading vines. Perfect for adding vertical greenery to your space. Easy to care for and grows quickly.</p>
+                    <div class="modal-price-section"><span class="modal-price">SAR 240</span></div>
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity</span>
+                        <div class="quantity-selector">
+                            <input type="radio" name="qty-12" id="qty-12-dec" class="qty-radio">
+                            <input type="radio" name="qty-12" id="qty-12-val" class="qty-radio" checked>
+                            <input type="radio" name="qty-12" id="qty-12-inc" class="qty-radio">
+                            <label for="qty-12-dec" class="qty-btn qty-minus">-</label>
+                            <span class="qty-display">1</span>
+                            <label for="qty-12-inc" class="qty-btn qty-plus">+</label>
+                        </div>
+                    </div>
+                    <button class="modal-add-to-cart">Add to cart</button>
+                    <div class="care-guide">
+                        <h3 class="care-guide-title">Care Guide</h3>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line></svg>
+                            <div class="care-info"><span class="care-label">Light</span><span class="care-value">Low to Bright</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <div class="care-info"><span class="care-label">Water</span><span class="care-value">Low</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.24 7.76A6 6 0 0 1 8.5 16v2H6v-2a8 8 0 0 1 12.77-6.48l-2.53 2.53z"></path></svg>
+                            <div class="care-info"><span class="care-label">Humidity</span><span class="care-value">Low to Medium</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+                            <div class="care-info"><span class="care-label">Fertilizing</span><span class="care-value">Monthly</span></div>
+                        </div>
+                        <div class="care-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path></svg>
+                            <div class="care-info"><span class="care-label">Re-potting</span><span class="care-value">1-2 Years</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chatbot Widget -->
+    <input type="checkbox" id="chatbot-toggle" class="chatbot-toggle-checkbox">
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Chat with us</h3>
+            <label for="chatbot-toggle" class="chatbot-close">✕</label>
+        </div>
+        <div class="chatbot-messages">
+            <div class="chatbot-message bot-message">
+                <div class="message-avatar">
+                <img src="/images/bloom_logo_trimmed.png" alt="Bloom" class="avatar-logo">
+                </div>
+                <div class="message-content">
+                    <p>Hi! Welcome to Bloom! 👋</p>
+                    <p>How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" placeholder="Type your message...">
+            <button class="chatbot-send-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <label for="chatbot-toggle" class="chatbot-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </label>
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+    // Load footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+        document.getElementById('footer').innerHTML = data;
+        });
+    </script>
+
+    
+</body>
+</html>

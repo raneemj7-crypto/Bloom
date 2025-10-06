@@ -1,152 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - Bloom</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | My Profile</title>
+  <link rel="stylesheet" href="bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="attached_assets/bloom_logo_trimmed_1759704631074.png" alt="Bloom Logo">
-                    <h1>BLOOM</h1>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="plan-details.html">Plans</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </nav>
-            </div>
+
+  <!-- Navigation -->
+  <div id="navbar"></div>
+
+  <!-- Profile Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>My Profile</h1>
+      <p>Manage your account and preferences</p>
+    </div>
+  </section>
+
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="container">
+      <div class="profile-content">
+        
+        <!-- Profile Sidebar -->
+        <div class="profile-sidebar">
+          <div class="profile-avatar">
+            <img src="images/imagesA.png" alt="User Avatar">
+            <button class="btn btn-secondary btn-sm">Change Photo</button>
+          </div>
+          
+          <nav class="profile-nav">
+            <a href="#account" class="profile-nav-link active">
+              <i class="fas fa-user"></i> Account Info
+            </a>
+              <a href="#orders" class="profile-nav-link">
+              <i class="fas fa-shopping-basket"></i> My Orders
+            </a>
+
+            <a href="#wishlist" class="profile-nav-link">
+              <i class="fas fa-heart"></i> Wishlist
+            </a>
+            <a href="#addresses" class="profile-nav-link">
+              <i class="fas fa-map-marker-alt"></i> Addresses
+            </a>
+            <a href="#settings" class="profile-nav-link">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <a href="login.html" class="profile-nav-link logout">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </nav>
         </div>
-    </header>
 
-    <section class="section">
-        <div class="container">
-            <div class="profile-header">
-                <h2>Welcome back, Sarah! 🌿</h2>
-                <p style="opacity: 0.95;">Manage your orders, subscriptions, and account settings</p>
-            </div>
-
-            <div class="profile-grid">
-                <div class="profile-sidebar">
-                    <h3 style="color: var(--dark-green); margin-bottom: 1.5rem;">Account Menu</h3>
-                    <ul style="list-style: none;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-light);"><a href="#" style="color: var(--primary-green); text-decoration: none; font-weight: 600;">📦 My Orders</a></li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-light);"><a href="#" style="color: var(--text-dark); text-decoration: none;">💚 Saved Plants</a></li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-light);"><a href="#" style="color: var(--text-dark); text-decoration: none;">🔄 Subscriptions</a></li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-light);"><a href="#" style="color: var(--text-dark); text-decoration: none;">⚙️ Settings</a></li>
-                        <li style="padding: 0.8rem 0;"><a href="#" style="color: var(--text-dark); text-decoration: none;">🚪 Logout</a></li>
-                    </ul>
+        <!-- Profile Main Content -->
+        <div class="profile-main">
+          
+          <!-- Account Information -->
+          <div class="profile-card">
+            <h2>Account Information</h2>
+            <form class="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" value="Raneem" required>
                 </div>
-
-                <div>
-                    <h3 style="color: var(--dark-green); margin-bottom: 1.5rem;">Recent Orders</h3>
-                    
-                    <div class="order-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <div>
-                                <p style="font-weight: 600; color: var(--dark-green);">Order #BL-2024-001</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Placed on March 15, 2024</p>
-                            </div>
-                            <span class="badge" style="background: var(--primary-green); color: var(--white);">Delivered</span>
-                        </div>
-                        <div style="display: flex; gap: 1rem;">
-                            <img src="attached_assets/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg_1759704562813.webp" alt="Snake Plant" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                            <div style="flex: 1;">
-                                <p style="font-weight: 600;">Serene Snake Plant</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Quantity: 1</p>
-                                <p style="color: var(--primary-green); font-weight: 600; margin-top: 0.5rem;">$45.99</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <div>
-                                <p style="font-weight: 600; color: var(--dark-green);">Order #BL-2024-002</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Placed on March 28, 2024</p>
-                            </div>
-                            <span class="badge" style="background: var(--accent-sage); color: var(--white);">In Transit</span>
-                        </div>
-                        <div style="display: flex; gap: 1rem;">
-                            <img src="attached_assets/Peace_Lily_Plant_Mud_Pot.jpg_1759704563906.webp" alt="Peace Lily" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                            <div style="flex: 1;">
-                                <p style="font-weight: 600;">Peace Lily</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Quantity: 2</p>
-                                <p style="color: var(--primary-green); font-weight: 600; margin-top: 0.5rem;">$79.98</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <div>
-                                <p style="font-weight: 600; color: var(--dark-green);">Order #BL-2024-003</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Placed on April 5, 2024</p>
-                            </div>
-                            <span class="badge" style="background: var(--earth-brown); color: var(--white);">Processing</span>
-                        </div>
-                        <div style="display: flex; gap: 1rem;">
-                            <img src="attached_assets/Areca_Plant_White_Pot.jpg_1759704617253.webp" alt="Areca Palm" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                            <div style="flex: 1;">
-                                <p style="font-weight: 600;">Areca Palm</p>
-                                <p style="color: var(--text-gray); font-size: 0.9rem;">Quantity: 1</p>
-                                <p style="color: var(--primary-green); font-weight: 600; margin-top: 0.5rem;">$67.99</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="background: var(--cream); padding: 2rem; border-radius: 10px; margin-top: 2rem; text-align: center;">
-                        <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Active Subscription</h3>
-                        <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Care Subscription - $49/month</p>
-                        <p style="font-size: 0.9rem; color: var(--text-gray);">Next delivery: April 15, 2024</p>
-                        <a href="plan-details.html" class="btn btn-secondary" style="margin-top: 1rem;">Manage Subscription</a>
-                    </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" value="Abumoustafa" required>
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="raneem@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" value="+966 500 000 000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="plan">Current Plan</label>
+                <select id="plan">
+                  <option>Free Plan</option>
+                  <option selected>Premium Plan</option>
+                  <option>Family Plan</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="profile-card">
+            <section class="recent-orders" id="recent-orders">
+            <h2>Recent Orders</h2>
+            <div class="orders-list">
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12345</h4>
+                  <p>Placed on Jan 15, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge delivered">Delivered</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 450</p>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12344</h4>
+                  <p>Placed on Jan 10, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge shipping">Shipping</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 320</p>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-info">
+                  <h4>Order #12343</h4>
+                  <p>Placed on Jan 5, 2025</p>
+                </div>
+                <div class="order-status">
+                  <span class="status-badge delivered">Delivered</span>
+                </div>
+                <div class="order-total">
+                  <p>SAR 180</p>
+                </div>
+              </div>
             </div>
+            <a href="#orders" class="btn btn-secondary">View All Orders</a>
+            </section>
+          </div>
+
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Bloom</h3>
-                    <p>Your trusted partner in bringing the joy of greenery into every home.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="shop.html">Shop Plants</a></li>
-                        <li><a href="plan-details.html">Subscription Plans</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Customer Care</h3>
-                    <ul>
-                        <li><a href="#">Care Guides</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="profile.html">My Account</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Stay Connected</h3>
-                    <p>📧 hello@bloom.com<br>📞 1-800-BLOOM</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bloom. All rights reserved. 🌿</p>
-            </div>
-        </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script>
+    // Load navbar and footer
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+      
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    });
+  </script>
+
 </body>
 </html>

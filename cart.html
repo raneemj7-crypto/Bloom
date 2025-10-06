@@ -1,142 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - Bloom</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom | Shopping Cart</title>
+  <link rel="stylesheet" href="bloom-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="attached_assets/bloom_logo_trimmed_1759704631074.png" alt="Bloom Logo">
-                    <h1>BLOOM</h1>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="plan-details.html">Plans</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </nav>
+
+  <!-- Navigation -->
+  <div id="navbar"></div>
+
+  <!-- Cart Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <p>Review your items before checkout</p>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <div class="container">
+      <div class="cart-content">
+        
+        <!-- Cart Items -->
+        <div class="cart-items">
+          <div class="cart-item">
+            <img src="images/image2222.png" alt="Plant" class="cart-item-image">
+            <div class="cart-item-details">
+              <h3>Dieffenbachia Plant</h3>
+              <p class="cart-item-price">SAR 180</p>
             </div>
+            <div class="cart-item-quantity">
+              <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+              <input type="number" value="1" min="1" class="qty-input">
+              <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="cart-item-total">
+              <p>SAR 180</p>
+            </div>
+            <button class="cart-item-remove"><i class="fas fa-trash"></i></button>
+          </div>
+
+          <div class="cart-item">
+            <img src="images/image2222.png" alt="Plant" class="cart-item-image">
+            <div class="cart-item-details">
+              <h3>Monstera Deliciosa</h3>
+              <p class="cart-item-price">SAR 250</p>
+            </div>
+            <div class="cart-item-quantity">
+              <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+              <input type="number" value="2" min="1" class="qty-input">
+              <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="cart-item-total">
+              <p>SAR 500</p>
+            </div>
+            <button class="cart-item-remove"><i class="fas fa-trash"></i></button>
+          </div>
         </div>
-    </header>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Your Cart</h2>
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>SAR 680</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span>SAR 50</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (15%)</span>
+            <span>SAR 102</span>
+          </div>
+          <hr>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>SAR 832</span>
+          </div>
 
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
-                <div>
-                    <div class="cart-item">
-                        <img src="attached_assets/SereneSnake_Plant_in_Grey_Ceramic_Pot.jpg_1759704562813.webp" alt="Snake Plant">
-                        <div class="cart-item-info">
-                            <h3 style="color: var(--dark-green);">Serene Snake Plant</h3>
-                            <p style="color: var(--text-gray);">Low-maintenance air purifier</p>
-                            <p class="price">$45.99</p>
-                            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                                <label>Quantity:</label>
-                                <input type="number" value="1" min="1" style="width: 60px; padding: 0.5rem; border: 2px solid var(--border-light); border-radius: 5px;">
-                                <a href="#" style="color: var(--primary-green); text-decoration: none;">Remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cart-item">
-                        <img src="attached_assets/Peace_Lily_Plant_Mud_Pot.jpg_1759704563906.webp" alt="Peace Lily">
-                        <div class="cart-item-info">
-                            <h3 style="color: var(--dark-green);">Peace Lily</h3>
-                            <p style="color: var(--text-gray);">Elegant blooming plant</p>
-                            <p class="price">$39.99</p>
-                            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                                <label>Quantity:</label>
-                                <input type="number" value="1" min="1" style="width: 60px; padding: 0.5rem; border: 2px solid var(--border-light); border-radius: 5px;">
-                                <a href="#" style="color: var(--primary-green); text-decoration: none;">Remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cart-item">
-                        <img src="attached_assets/Spiral_Lucky_Bamboo_in_Premium_Vase.jpg_1759704561379.webp" alt="Lucky Bamboo">
-                        <div class="cart-item-info">
-                            <h3 style="color: var(--dark-green);">Spiral Lucky Bamboo</h3>
-                            <p style="color: var(--text-gray);">Unique spiral design</p>
-                            <p class="price">$34.99</p>
-                            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                                <label>Quantity:</label>
-                                <input type="number" value="2" min="1" style="width: 60px; padding: 0.5rem; border: 2px solid var(--border-light); border-radius: 5px;">
-                                <a href="#" style="color: var(--primary-green); text-decoration: none;">Remove</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="cart-summary">
-                        <h3 style="color: var(--dark-green); margin-bottom: 1.5rem;">Order Summary</h3>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
-                            <span>Subtotal:</span>
-                            <span>$155.96</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
-                            <span>Shipping:</span>
-                            <span style="color: var(--primary-green);">FREE</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
-                            <span>Tax:</span>
-                            <span>$12.48</span>
-                        </div>
-                        <hr style="margin: 1.5rem 0; border: none; border-top: 2px solid var(--border-light);">
-                        <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; color: var(--dark-green);">
-                            <span>Total:</span>
-                            <span>$168.44</span>
-                        </div>
-                        <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: 2rem; text-align: center;">Proceed to Checkout</a>
-                        <a href="shop.html" class="btn btn-secondary" style="width: 100%; margin-top: 1rem; text-align: center;">Continue Shopping</a>
-                    </div>
-                </div>
-            </div>
+          <button class="btn btn-primary btn-block">Proceed to Checkout</button>
+          <a href="shop-page.html" class="btn btn-secondary btn-block">Continue Shopping</a>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Bloom</h3>
-                    <p>Your trusted partner in bringing the joy of greenery into every home.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="shop.html">Shop Plants</a></li>
-                        <li><a href="plan-details.html">Subscription Plans</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Customer Care</h3>
-                    <ul>
-                        <li><a href="#">Care Guides</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="profile.html">My Account</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Stay Connected</h3>
-                    <p>📧 hello@bloom.com<br>📞 1-800-BLOOM</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bloom. All rights reserved. 🌿</p>
-            </div>
-        </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script>
+    // Load navbar and footer
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+      
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    });
+  </script>
+
 </body>
 </html>
