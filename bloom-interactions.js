@@ -102,22 +102,26 @@ function initializeWishlistButtons() {
   // First, set initial heart states based on saved wishlist
   const savedWishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
   
-  // Handle homepage wishlist buttons (.wishlist-btn with icon)
+  // Handle homepage wishlist buttons (.wishlist-btn with icon) - only for product cards
   document.querySelectorAll('.wishlist-btn').forEach(button => {
     const card = button.closest('.bestseller-card') || button.closest('.product-card');
-    if (card) {
-      const name = card.querySelector('.bestseller-name, .product-name')?.textContent?.trim() || 'Product';
-      const isInWishlist = savedWishlist.some(item => item.name === name);
-      const icon = button.querySelector('i');
-      
-      // Set initial state
-      if (isInWishlist) {
-        icon.classList.remove('far');
-        icon.classList.add('fas');
-      } else {
-        icon.classList.remove('fas');
-        icon.classList.add('far');
-      }
+    // Only process if it's within a product/bestseller card
+    if (!card) return;
+    
+    const name = card.querySelector('.bestseller-name, .product-name')?.textContent?.trim() || 'Product';
+    const isInWishlist = savedWishlist.some(item => item.name === name);
+    const icon = button.querySelector('i');
+    
+    // Only process if it has a Font Awesome icon
+    if (!icon) return;
+    
+    // Set initial state
+    if (isInWishlist) {
+      icon.classList.remove('far');
+      icon.classList.add('fas');
+    } else {
+      icon.classList.remove('fas');
+      icon.classList.add('far');
     }
     
     // Add click handler
@@ -132,6 +136,8 @@ function initializeWishlistButtons() {
         const image = card.querySelector('img')?.src || '';
         
         const icon = this.querySelector('i');
+        if (!icon) return;
+        
         const wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
         const existingIndex = wishlist.findIndex(item => item.name === name);
         
@@ -158,11 +164,11 @@ function initializeWishlistButtons() {
     });
   });
   
-  // Handle shop page wishlist icons (.wishlist-icon with checkbox)
+  // Handle wishlist icons (.wishlist-icon with checkbox) - works for both shop page and homepage
   document.querySelectorAll('.wishlist-icon').forEach(label => {
-    const card = label.closest('.product-card');
+    const card = label.closest('.product-card') || label.closest('.bestseller-card');
     if (card) {
-      const name = card.querySelector('.product-name')?.textContent?.trim() || 'Product';
+      const name = card.querySelector('.product-name, .bestseller-name')?.textContent?.trim() || 'Product';
       const isInWishlist = savedWishlist.some(item => item.name === name);
       const checkbox = label.previousElementSibling; // Get the checkbox input
       
@@ -177,10 +183,10 @@ function initializeWishlistButtons() {
       e.preventDefault();
       e.stopPropagation();
       
-      const card = this.closest('.product-card');
+      const card = this.closest('.product-card') || this.closest('.bestseller-card');
       if (card) {
-        const name = card.querySelector('.product-name')?.textContent?.trim() || 'Product';
-        const price = card.querySelector('.product-price')?.textContent || 'SAR 0';
+        const name = card.querySelector('.product-name, .bestseller-name')?.textContent?.trim() || 'Product';
+        const price = card.querySelector('.product-price, .bestseller-price')?.textContent || 'SAR 0';
         const image = card.querySelector('img')?.src || '';
         const checkbox = this.previousElementSibling;
         
