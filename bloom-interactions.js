@@ -82,12 +82,13 @@ function showNotification(message, type = 'success') {
 
 // Initialize Add to Cart Buttons
 function initializeCartButtons() {
-  document.querySelectorAll('.btn-add-cart').forEach(button => {
+  // Handle both .btn-add-cart (homepage) and .add-to-cart (shop page)
+  document.querySelectorAll('.btn-add-cart, .add-to-cart').forEach(button => {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       const card = this.closest('.bestseller-card') || this.closest('.product-card');
       if (card) {
-        const name = card.querySelector('.bestseller-name, .product-name')?.textContent || 'Product';
+        const name = card.querySelector('.bestseller-name, .product-name')?.textContent?.trim() || 'Product';
         const price = card.querySelector('.bestseller-price, .product-price')?.textContent || 'SAR 0';
         const image = card.querySelector('img')?.src || '';
         addToCart(name, price, image);
@@ -101,10 +102,11 @@ function initializeWishlistButtons() {
   // First, set initial heart states based on saved wishlist
   const savedWishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
   
+  // Handle homepage wishlist buttons (.wishlist-btn with icon)
   document.querySelectorAll('.wishlist-btn').forEach(button => {
     const card = button.closest('.bestseller-card') || button.closest('.product-card');
     if (card) {
-      const name = card.querySelector('.bestseller-name, .product-name')?.textContent || 'Product';
+      const name = card.querySelector('.bestseller-name, .product-name')?.textContent?.trim() || 'Product';
       const isInWishlist = savedWishlist.some(item => item.name === name);
       const icon = button.querySelector('i');
       
@@ -125,7 +127,7 @@ function initializeWishlistButtons() {
       
       const card = this.closest('.bestseller-card') || this.closest('.product-card');
       if (card) {
-        const name = card.querySelector('.bestseller-name, .product-name')?.textContent || 'Product';
+        const name = card.querySelector('.bestseller-name, .product-name')?.textContent?.trim() || 'Product';
         const price = card.querySelector('.bestseller-price, .product-price')?.textContent || 'SAR 0';
         const image = card.querySelector('img')?.src || '';
         
@@ -142,6 +144,56 @@ function initializeWishlistButtons() {
           // Remove from wishlist
           icon.classList.remove('fas');
           icon.classList.add('far');
+          
+          if (existingIndex > -1) {
+            const updatedWishlist = wishlist.filter(item => item.name !== name);
+            localStorage.setItem('bloomWishlist', JSON.stringify(updatedWishlist));
+            
+            // Update the global wishlist variable
+            window.wishlist = updatedWishlist;
+          }
+          showNotification(`${name} removed from wishlist!`, 'info');
+        }
+      }
+    });
+  });
+  
+  // Handle shop page wishlist icons (.wishlist-icon with checkbox)
+  document.querySelectorAll('.wishlist-icon').forEach(label => {
+    const card = label.closest('.product-card');
+    if (card) {
+      const name = card.querySelector('.product-name')?.textContent?.trim() || 'Product';
+      const isInWishlist = savedWishlist.some(item => item.name === name);
+      const checkbox = label.previousElementSibling; // Get the checkbox input
+      
+      // Set initial state
+      if (checkbox && isInWishlist) {
+        checkbox.checked = true;
+      }
+    }
+    
+    // Add click handler
+    label.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const card = this.closest('.product-card');
+      if (card) {
+        const name = card.querySelector('.product-name')?.textContent?.trim() || 'Product';
+        const price = card.querySelector('.product-price')?.textContent || 'SAR 0';
+        const image = card.querySelector('img')?.src || '';
+        const checkbox = this.previousElementSibling;
+        
+        const wishlist = JSON.parse(localStorage.getItem('bloomWishlist')) || [];
+        const existingIndex = wishlist.findIndex(item => item.name === name);
+        
+        if (!checkbox.checked) {
+          // Add to wishlist
+          checkbox.checked = true;
+          addToWishlist(name, price, image);
+        } else {
+          // Remove from wishlist
+          checkbox.checked = false;
           
           if (existingIndex > -1) {
             const updatedWishlist = wishlist.filter(item => item.name !== name);
