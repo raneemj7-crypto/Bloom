@@ -3,7 +3,11 @@
 ## Recent Changes
 
 **October 6, 2025 - Latest Updates**
-- ✅ **Header Logo Update**: Replaced with original generated logo (bloom_logo_trimmed.png)
+- ✅ **Logo Structure Redesign**: Updated header logo to display image on left + "Bloom" H3 heading + "Refresh Every Room" tagline (instead of single logo image)
+- ✅ **Hamburger Menu Removal**: Completely removed mobile hamburger menu - all navigation elements now stay visible on mobile using flex-wrap
+- ✅ **Wishlist JavaScript Fix**: Added guards to prevent crashes when encountering header wishlist button (which uses SVG instead of Font Awesome icons)
+- ✅ **Unified Wishlist Pattern**: Homepage bestsellers now use checkbox + SVG pattern matching shop page style, JavaScript handles both .bestseller-card and .product-card containers
+- ✅ **Header Wishlist Link**: Header wishlist icon now properly links to wishlist.html page
 - ✅ **Unified Chatbot Design**: Implemented shop page checkbox-toggle chatbot style across all pages (about, plans, contact, cart, profile, wishlist) with AI response functionality
 - ✅ **Navigation Cleanup**: Removed emoji icons from all navigation links (Home, Shop, Plans, About Us, Contact Us)
 - ✅ **Active Page Indicator Fix**: Corrected navigation underline to highlight only one link per page
@@ -11,7 +15,6 @@
 - ✅ **Enhanced Cart Compatibility**: JavaScript now handles both .btn-add-cart and .add-to-cart button classes
 - ✅ **Wishlist Heart Icons**: Unified wishlist heart style across homepage and shop page - outline SVG hearts in white circular backgrounds positioned in top right corner
 - ✅ **Chatbot CSS Integration**: Complete chatbot styles (from shop.css) added to bloom-style.css for unified styling
-- ✅ **Mobile Hamburger Menu Fix**: Enhanced mobile navigation with proper display, z-index, hover effects, and full-width dropdown menu for screens under 768px
 
 **October 6, 2025 - Interactive Features & Design Enhancements**
 - ✅ **Responsive Best Sellers Grid**: 4 columns on large screens, 2 on tablets, 1 on mobile
