@@ -211,53 +211,114 @@ function initializeWishlistButtons() {
 
 // Chatbot functionality
 function initializeChatbot() {
-  const chatbotBtn = document.querySelector('.chatbot-btn');
-  const chatbotWidget = document.querySelector('.chatbot-widget');
-  const closeChatbot = document.querySelector('.close-chatbot');
-  const sendMessage = document.querySelector('.send-message');
-  const chatInput = document.querySelector('.chat-input');
-  const chatMessages = document.querySelector('.chat-messages');
+  const chatInput = document.querySelector('.chatbot-input');
+  const sendBtn = document.querySelector('.chatbot-send-btn');
+  const chatMessages = document.querySelector('.chatbot-messages');
   
-  if (chatbotBtn && chatbotWidget) {
-    chatbotBtn.addEventListener('click', () => {
-      chatbotWidget.classList.toggle('active');
+  if (sendBtn && chatInput && chatMessages) {
+    const sendMsg = () => {
+      const message = chatInput.value.trim();
+      if (message) {
+        // Add user message
+        addChatbotMessage(message, 'user');
+        chatInput.value = '';
+        
+        // Simulate AI response after delay
+        setTimeout(() => {
+          const response = generateAIResponse(message);
+          addChatbotMessage(response, 'bot');
+        }, 800);
+      }
+    };
+    
+    sendBtn.addEventListener('click', sendMsg);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMsg();
+      }
     });
-    
-    if (closeChatbot) {
-      closeChatbot.addEventListener('click', () => {
-        chatbotWidget.classList.remove('active');
-      });
-    }
-    
-    if (sendMessage && chatInput) {
-      const sendMsg = () => {
-        const message = chatInput.value.trim();
-        if (message) {
-          addChatMessage(message, 'user');
-          chatInput.value = '';
-          
-          setTimeout(() => {
-            addChatMessage('Thank you for your message! Our plant care experts will assist you shortly. 🌿', 'bot');
-          }, 1000);
-        }
-      };
-      
-      sendMessage.addEventListener('click', sendMsg);
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          sendMsg();
-        }
-      });
-    }
   }
 }
 
-function addChatMessage(text, sender) {
-  const chatMessages = document.querySelector('.chat-messages');
+// Generate AI-like responses based on keywords
+function generateAIResponse(message) {
+  const lowerMessage = message.toLowerCase();
+  
+  // Care-related questions
+  if (lowerMessage.includes('water') || lowerMessage.includes('watering')) {
+    return "💧 Watering depends on the plant type! Generally, check if the top inch of soil is dry before watering. Most indoor plants prefer weekly watering, but succulents need less frequent watering.";
+  }
+  if (lowerMessage.includes('light') || lowerMessage.includes('sun')) {
+    return "☀️ Most indoor plants thrive in bright, indirect light. Avoid direct sunlight which can burn leaves. Low-light plants like snake plants and pothos are great for dimmer spaces!";
+  }
+  if (lowerMessage.includes('fertilize') || lowerMessage.includes('fertilizer')) {
+    return "🌱 Feed your plants during growing season (spring/summer) with balanced liquid fertilizer every 2-4 weeks. Reduce to monthly or stop in fall/winter when growth slows.";
+  }
+  if (lowerMessage.includes('yellow') && lowerMessage.includes('leaves')) {
+    return "🍂 Yellow leaves usually indicate overwatering or poor drainage. Check if soil is soggy and ensure your pot has drainage holes. Could also be natural aging of lower leaves.";
+  }
+  
+  // Plant recommendations
+  if (lowerMessage.includes('beginner') || lowerMessage.includes('easy')) {
+    return "🌿 Great beginner plants: Snake Plant, Pothos, Spider Plant, and ZZ Plant. They're forgiving, require minimal care, and adapt well to various conditions!";
+  }
+  if (lowerMessage.includes('low light')) {
+    return "🌙 Perfect for low light: Snake Plants, Pothos, Peace Lily, and ZZ Plants. These beauties can thrive even in offices or rooms without much natural light!";
+  }
+  if (lowerMessage.includes('air purifying') || lowerMessage.includes('clean air')) {
+    return "🌬️ Top air-purifying plants: Snake Plant, Peace Lily, Spider Plant, and Rubber Plant. They help remove toxins and improve indoor air quality!";
+  }
+  
+  // Shopping-related
+  if (lowerMessage.includes('delivery') || lowerMessage.includes('shipping')) {
+    return "📦 We offer fast delivery across Saudi Arabia! Orders typically arrive within 2-3 business days with careful packaging to ensure your plants arrive healthy.";
+  }
+  if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+    return "💰 Our plants range from SAR 150 to SAR 500+ depending on size and rarity. Check our Shop page for current prices and special offers!";
+  }
+  if (lowerMessage.includes('subscription') || lowerMessage.includes('plan')) {
+    return "📋 Our subscription plans deliver fresh plants monthly! Choose from Basic (1 plant), Standard (2 plants), or Premium (3 plants + care guide). Visit our Plans page for details!";
+  }
+  
+  // General questions
+  if (lowerMessage.includes('help') || lowerMessage.includes('support')) {
+    return "🌟 I'm here to help! Ask me about plant care (watering, light, fertilizing), recommendations for beginners, or our products and services. What would you like to know?";
+  }
+  if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+    return "You're welcome! 🌿 Happy to help! Feel free to ask if you have more questions about plants or our services.";
+  }
+  if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    return "Hi there! 👋 Welcome to Bloom! How can I assist you with your plant journey today?";
+  }
+  
+  // Default response
+  return "🌿 That's a great question! For specific plant care advice or detailed information, please contact our expert team at bloom@plants.com or call +966 500000000. I can also help with general questions about watering, light, plant recommendations, or our services!";
+}
+
+// Add message to chatbot
+function addChatbotMessage(text, sender) {
+  const chatMessages = document.querySelector('.chatbot-messages');
   if (chatMessages) {
     const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${sender}`;
-    messageDiv.textContent = text;
+    messageDiv.className = `chatbot-message ${sender}-message`;
+    
+    if (sender === 'bot') {
+      messageDiv.innerHTML = `
+        <div class="message-avatar">
+          <img src="images/bloom_logo_trimmed.png" alt="Bloom" class="avatar-logo">
+        </div>
+        <div class="message-content">
+          <p>${text}</p>
+        </div>
+      `;
+    } else {
+      messageDiv.innerHTML = `
+        <div class="message-content">
+          <p>${text}</p>
+        </div>
+      `;
+    }
+    
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }

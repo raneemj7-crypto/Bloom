@@ -139,27 +139,38 @@
   </script>
 
   <!-- Chatbot Widget -->
-  <button class="chatbot-btn" id="chatbotBtn">
-    <i class="fas fa-comment-dots"></i>
-  </button>
-  
-  <div class="chatbot-widget" id="chatbotWidget">
+  <input type="checkbox" id="chatbot-toggle" class="chatbot-toggle-checkbox">
+  <div class="chatbot-container">
     <div class="chatbot-header">
-      <h3>🌿 Plant Assistant</h3>
-      <button class="close-chatbot" id="closeChatbot">&times;</button>
+      <h3>Chat with us</h3>
+      <label for="chatbot-toggle" class="chatbot-close">✕</label>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-message bot">
-        Hello! How can I help you today? 🌱
+    <div class="chatbot-messages">
+      <div class="chatbot-message bot-message">
+        <div class="message-avatar">
+          <img src="images/bloom_logo_trimmed.png" alt="Bloom" class="avatar-logo">
+        </div>
+        <div class="message-content">
+          <p>Hi! Welcome to Bloom! 👋</p>
+          <p>How can I help you today?</p>
+        </div>
       </div>
     </div>
-    <div class="chat-input-container">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
-      <button class="send-message" id="sendMessage">
-        <i class="fas fa-paper-plane"></i>
+    <div class="chatbot-input-area">
+      <input type="text" class="chatbot-input" placeholder="Type your message...">
+      <button class="chatbot-send-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
       </button>
     </div>
   </div>
+  <label for="chatbot-toggle" class="chatbot-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </label>
 
   <script src="bloom-interactions.js"></script>
 </body>

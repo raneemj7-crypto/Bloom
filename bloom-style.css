@@ -2253,3 +2253,209 @@ ul {
 .remove-wishlist:hover {
   opacity: 0.9;
 }
+
+/* ========================================
+   UNIFIED CHATBOT WIDGET (Shop Page Style)
+   ======================================== */
+.chatbot-toggle-checkbox {
+  display: none;
+}
+
+.chatbot-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--leaf-600), var(--leaf-700));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(79, 121, 66, 0.3);
+  transition: all 0.3s;
+  z-index: 1000;
+  color: white;
+}
+
+.chatbot-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(79, 121, 66, 0.5);
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 100px;
+  right: 2rem;
+  width: 380px;
+  height: 500px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  z-index: 999;
+}
+
+.chatbot-toggle-checkbox:checked ~ .chatbot-container {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.chatbot-toggle-checkbox:checked ~ .chatbot-button {
+  background: var(--stone-400);
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, var(--leaf-600), var(--leaf-700));
+  color: white;
+  padding: 1.5rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.chatbot-close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.chatbot-close:hover {
+  opacity: 1;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: var(--ivory-50);
+}
+
+.chatbot-message {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.message-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  background-color: white;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-content p {
+  background-color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  margin: 0.25rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bot-message .message-content p {
+  background-color: white;
+  color: var(--char-900);
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.user-message .message-content p {
+  background-color: var(--leaf-600);
+  color: white;
+  text-align: right;
+}
+
+.chatbot-input-area {
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  gap: 0.5rem;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.chatbot-input:focus {
+  border-color: var(--leaf-600);
+}
+
+.chatbot-send-btn {
+  width: 40px;
+  height: 40px;
+  background-color: var(--leaf-600);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.chatbot-send-btn:hover {
+  background-color: var(--leaf-700);
+  transform: scale(1.05);
+}
+
+.avatar-logo {
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: auto;
+}
+
+/* Mobile responsive for chatbot */
+@media (max-width: 480px) {
+  .chatbot-container {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 90px;
+    height: 450px;
+  }
+  
+  .chatbot-button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 56px;
+    height: 56px;
+  }
+}
