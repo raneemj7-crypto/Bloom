@@ -371,12 +371,24 @@ ul {
   width: 40px;
   height: 40px;
   padding: 0;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: var(--ivory-50);
+  color: var(--leaf-700);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
 }
 
 .mobile-menu-toggle svg {
   width: 24px;
   height: 24px;
   stroke: currentColor;
+  stroke-width: 2.5;
 }
 
 /* ========================================
@@ -1852,6 +1864,8 @@ ul {
     transition: left 0.3s ease;
     box-shadow: var(--shadow-lg);
     z-index: 999;
+    display: block;
+    overflow-y: auto;
   }
   
   .nav.active {
@@ -1863,10 +1877,22 @@ ul {
     padding: 2rem;
     gap: 1rem;
     align-items: flex-start;
+    width: 100%;
+  }
+  
+  .nav-links li {
+    width: 100%;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 0.75rem;
+    width: 100%;
   }
   
   .mobile-menu-toggle {
     display: block;
+    z-index: 1001;
   }
   
   .page-header h1 {
