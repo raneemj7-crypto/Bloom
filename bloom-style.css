@@ -696,6 +696,7 @@ ul {
   padding: 4rem 0;
   border-bottom: 2px solid rgba(79, 121, 66, 0.15);
   position: relative;
+  margin-bottom: 6rem;
 }
 
 .section-divider::after {
@@ -2231,14 +2232,14 @@ ul {
 }
 
 .footer-overlay {
-  background: rgba(79, 121, 66, 0.85) !important;
+  background: rgba(79, 121, 66, 0.3) !important;
 }
 
 .footer::before {
   content: '';
   position: absolute;
   top: -150px;
-  right: 10%;
+  right: 2%;
   width: 200px;
   height: 200px;
   background: url('images/homeplant.png') no-repeat center center;
