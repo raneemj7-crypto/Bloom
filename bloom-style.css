@@ -1518,6 +1518,64 @@ ul {
 /* ========================================
    PROFILE SECTION
    ======================================== */
+   /* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--leaf-600);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--leaf-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--leaf-600);
+  border: 2px solid var(--leaf-600);
+}
+
+.btn-secondary:hover {
+  background-color: var(--leaf-600);
+  color: white;
+}
+
+.btn-light {
+  background-color: white;
+  color: var(--leaf-600);
+}
+
+.btn-light:hover {
+  background-color: var(--ivory-50);
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+  margin-top: 1rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+/* - */
 
 .profile-section {
   padding: 4rem 0;
@@ -1666,7 +1724,7 @@ ul {
    ======================================== */
 
 .footer {
-  background-color: var(--leaf-600);
+  background-color: #395830e5;
   color: white;
   padding: 3rem 0 1rem;
   position: relative;
@@ -1713,7 +1771,7 @@ ul {
 }
 
 .footer-logo img {
-  height: 40px;
+  height: 80px;
   margin-right: 10px;
 }
 
@@ -2250,10 +2308,10 @@ ul {
 .footer::before {
   content: '';
   position: absolute;
-  top: -80px;
+  top: -10px;
   right: 2%;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background: url('images/homeplant.png') no-repeat center center;
   background-size: contain;
   z-index: 10;
@@ -2521,5 +2579,162 @@ ul {
     right: 1rem;
     width: 56px;
     height: 56px;
+  }
+}
+
+
+/* ========================================
+   CHECKOUT PAGE STYLES
+   ======================================== */
+
+.checkout-section {
+  padding: 4rem 0;
+  background-color: var(--ivory-50);
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.checkout-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-subtitle {
+  color: var(--leaf-700);
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.summary-items {
+  margin-bottom: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ivory-100);
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--ivory-100);
+}
+
+.summary-item-details {
+  flex: 1;
+}
+
+.summary-item-name {
+  font-weight: 600;
+  color: var(--stone-700);
+  margin-bottom: 0.25rem;
+}
+
+.summary-item-qty {
+  color: var(--stone-400);
+  font-size: 0.9rem;
+}
+
+.summary-item-price {
+  font-weight: 600;
+  color: var(--leaf-700);
+}
+
+.summary-divider {
+  border: none;
+  border-top: 2px solid var(--ivory-100);
+  margin: 1.5rem 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  color: var(--stone-600);
+}
+
+.free-shipping {
+  color: var(--leaf-600);
+  font-weight: 600;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--leaf-700);
+  margin-top: 1rem;
+}
+
+.secure-checkout-badge {
+  background: var(--cream);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.secure-checkout-badge i {
+  color: var(--leaf-600);
+  font-size: 1.2rem;
+}
+
+.secure-checkout-badge p {
+  font-size: 0.9rem;
+  color: var(--stone-600);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive Checkout */
+@media (max-width: 968px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .checkout-summary {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkout-card {
+    padding: 1.5rem;
   }
 }
